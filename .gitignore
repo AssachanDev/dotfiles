@@ -1,0 +1,11 @@
+# Backup files created by install.sh
+*.bak.*
+
+# Editor temp files
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS
+Thumbs.db

@@ -1,0 +1,45 @@
+# 1. Powerlevel10k Instant Prompt
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# 2. Environment Variables
+export EDITOR='nvim'
+export PATH=$HOME/.local/bin:$PATH
+
+# 3. Theme & Appearance (Powerlevel10k)
+source ~/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme
+
+# 4. Plugins
+source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# 5. CLI Tools Integration (Init)
+eval "$(zoxide init zsh)"
+eval "$(atuin init zsh)"
+
+# 6. Aliases
+# --- Core ---
+alias nv='nvim'
+alias yz='yazi'
+alias cd='z'        
+alias ..='z ..'     
+alias grep='grep --color=auto'
+
+# --- Modern ls (eza) ---
+alias ls='eza --icons --group-directories-first'
+alias ll='eza -lh --icons --group-directories-first'
+alias la='eza -a --icons --group-directories-first'
+alias tree='eza --tree --icons'
+
+# --- Modern CLI Tools ---
+alias rg='rg --smart-case'         
+alias duf='duf'                   
+if command -v fdfind > /dev/null; then
+    alias fd='fdfind'
+fi
+
+# 7. Completion System
+autoload -Uz compinit && compinit
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 
