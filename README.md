@@ -74,12 +74,9 @@ alias ll='eza -lh --icons'
 alias la='eza -a --icons'
 alias tree='eza --tree --icons'
 alias nv='nvim'
-alias yz='yazi'        # requires yazi (not installed by this script)
+alias yz='yazi'
 alias rg='rg --smart-case'
 ```
-
-> **Note:** `alias yz='yazi'` requires [yazi](https://github.com/sxyazi/yazi) to be installed separately.
-> Yazi is not included in this script — install it manually if needed.
 
 ---
 
