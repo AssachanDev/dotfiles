@@ -81,9 +81,12 @@ The script will automatically:
 
 | Plugin | Description |
 |--------|-------------|
+| [oh-my-zsh](https://ohmyz.sh/) | Zsh framework with plugins and helpers |
 | [Powerlevel10k](https://github.com/romkatv/powerlevel10k) | Fast and customizable Zsh prompt theme |
 | [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) | Fish-like command suggestions |
 | [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) | Syntax highlighting in the shell |
+
+**oh-my-zsh plugins enabled:** `git` `sudo` `docker` `extract`
 
 ---
 
@@ -100,15 +103,17 @@ The script will automatically:
 **Aliases:**
 
 ```zsh
-alias cd='z'           # zoxide instead of cd
-alias ls='eza --icons'
-alias ll='eza -lh --icons'
-alias la='eza -a --icons'
+alias ls='eza --icons --group-directories-first'
+alias ll='eza -lh --icons --group-directories-first'
+alias la='eza -a --icons --group-directories-first'
 alias tree='eza --tree --icons'
 alias nv='nvim'
 alias yz='yazi'
 alias rg='rg --smart-case'
 ```
+
+> [!NOTE]
+> `cd` is powered by zoxide via `zoxide init zsh --cmd cd` — tab completion works as expected.
 
 </details>
 

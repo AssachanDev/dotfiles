@@ -42,6 +42,15 @@ setup_tpm() {
 setup_zsh_plugins() {
     header "Installing Zsh plugins"
 
+    # oh-my-zsh
+    if [ ! -d "$HOME/.oh-my-zsh" ]; then
+        info "Installing oh-my-zsh..."
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+        success "oh-my-zsh installed"
+    else
+        info "oh-my-zsh already present, skipping"
+    fi
+
     local zsh_dir="$HOME/.config/zsh"
     mkdir -p "$zsh_dir"
 
