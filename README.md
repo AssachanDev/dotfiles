@@ -71,8 +71,11 @@ The script will automatically:
 
 | Tool | Description |
 |------|-------------|
-| [docker](https://www.docker.com/) | Container runtime |
+| [docker](https://www.docker.com/) | Container runtime (`docker.io` or `docker-ce` depending on environment) |
 | [lazydocker](https://github.com/jesseduffield/lazydocker) | Terminal UI for Docker |
+
+> [!NOTE]
+> On Ubuntu, if `containerd.io` (Docker's official package) is already installed, the script will automatically install `docker-ce` from Docker's official repository instead of `docker.io` to avoid package conflicts.
 
 ### Zsh Plugins
 

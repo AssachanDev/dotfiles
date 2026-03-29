@@ -23,11 +23,29 @@ install_packages_ubuntu() {
         tmux
         btop
         bat
-        docker.io
     )
 
     sudo apt install -y "${packages[@]}"
     success "Base packages installed"
+
+    # docker — handle containerd.io conflict
+    if ! has docker; then
+        info "Installing Docker..."
+        if dpkg -s containerd.io &>/dev/null; then
+            info "Found containerd.io — installing docker-ce via official repo..."
+            sudo apt install -y ca-certificates curl gnupg lsb-release
+            sudo install -m 0755 -d /etc/apt/keyrings
+            curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+            sudo chmod a+r /etc/apt/keyrings/docker.gpg
+            echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+            sudo apt update -qq
+            sudo apt install -y docker-ce docker-ce-cli docker-compose-plugin
+        else
+            sudo apt install -y docker.io
+        fi
+        sudo usermod -aG docker "$USER" 2>/dev/null || true
+        success "Docker installed"
+    fi
 
     # zoxide — not always in apt repos
     if ! has zoxide; then
