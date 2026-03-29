@@ -21,8 +21,17 @@ source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # 6. CLI Tools Integration (Init)
-eval "$(zoxide init zsh --cmd cd)"
+eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
+
+# cd — use builtin for 'cd -' and directory stack, zoxide for everything else
+cd() {
+    if [[ "$1" == "-" ]] || [[ "$1" =~ ^-[0-9]+$ ]] || [[ $# -eq 0 ]]; then
+        builtin cd "$@"
+    else
+        z "$@"
+    fi
+}
 
 # 7. Aliases
 # --- Core ---
