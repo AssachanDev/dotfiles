@@ -5,7 +5,7 @@ fi
 
 # 2. Environment Variables
 export EDITOR='nvim'
-export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/.atuin/bin:$PATH
 
 # 3. Theme & Appearance (Powerlevel10k)
 source ~/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme
@@ -33,10 +33,13 @@ alias la='eza -a --icons --group-directories-first'
 alias tree='eza --tree --icons'
 
 # --- Modern CLI Tools ---
-alias rg='rg --smart-case'         
-alias duf='duf'                   
+alias rg='rg --smart-case'
+alias duf='duf'
 if command -v fdfind > /dev/null; then
     alias fd='fdfind'
+fi
+if command -v batcat > /dev/null; then
+    alias bat='batcat'
 fi
 
 # 7. Completion System
