@@ -247,6 +247,16 @@ Config lives in a separate repo → [AssachanDev/nvim](https://github.com/Assach
 
 ---
 
+## ✅ Verify Installation
+
+After running `install.sh`, verify everything is working:
+
+```bash
+bash scripts/check_tools.sh
+```
+
+---
+
 ## 📁 Project Structure
 
 ```
@@ -257,7 +267,8 @@ back-up-tools/
 │   ├── detect_distro.sh    # Auto-detect Arch / Ubuntu / Debian
 │   ├── packages_arch.sh    # Arch package list
 │   ├── packages_ubuntu.sh  # Ubuntu/Debian package list
-│   └── setup_configs.sh    # Symlink configs + install plugins
+│   ├── setup_configs.sh    # Symlink configs + install plugins
+│   └── check_tools.sh      # Verify all tools are installed correctly
 └── configs/
     ├── zsh/
     ├── kitty/
